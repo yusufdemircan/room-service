@@ -28,15 +28,15 @@ public class RoomServiceApplication implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		try {
-			UserDto resp = userClient.getUserTest();
+			UserDto resp = userClient.getUserTest("Bearer yedy");
 			logger.info("Response body: [{}]", resp);
 		} catch (Exception e) {
 			logger.error("An exception occurred call order service: ", e);
 		}
 	}
-	private HttpEntity<?> getHeaders() {
+	private HttpHeaders getHeaders() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-		return new HttpEntity<>(headers);
+		return headers;
 	}
 }
